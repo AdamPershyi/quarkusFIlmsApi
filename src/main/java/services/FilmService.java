@@ -49,23 +49,23 @@ public class FilmService {
 
     }
 
-    public List<FilmDto> getFilmsByGenre(List<FilmInputDto> filmInputDtos){
-        List<FilmInputDto> filmWithOutGenre = filmInputDtos.stream()
-                .filter(filmInputDto -> filmInputDto.genre() == null)
-                .toList();
-        if (!filmWithOutGenre.isEmpty()){
-            throw new RuntimeException("Film haven't genre");
-        }
-
-        List<Film> matchFilms = new ArrayList<>();
-for (FilmInputDto filmInputDto:filmInputDtos){
-    List<Film> byGenre = filmRepository.findByGenre(filmInputDto.genre());
-    matchFilms.addAll(byGenre);
-}
-return filmMapper.toListDtos(matchFilms);
-
-
-    }
+//    public List<FilmDto> getFilmsByGenre(List<FilmInputDto> filmInputDtos){
+//        List<FilmInputDto> filmWithOutGenre = filmInputDtos.stream()
+//                .filter(filmInputDto -> filmInputDto.genres() == null)
+//                .toList();
+//        if (!filmWithOutGenre.isEmpty()){
+//            throw new RuntimeException("Film haven't genres");
+//        }
+//
+//        List<Film> matchFilms = new ArrayList<>();
+//for (FilmInputDto filmInputDto:filmInputDtos){
+//    List<Film> byGenre = filmRepository.findByGenre(filmInputDto.genres());
+//    matchFilms.addAll(byGenre);
+//}
+//return filmMapper.toListDtos(matchFilms);
+//
+//
+//    }
 
     private Film findFilmById(UUID id) {
         return filmRepository.findById(id);

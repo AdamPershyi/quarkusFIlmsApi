@@ -16,7 +16,19 @@ public class FilmResource {
     @Inject
     FilmService filmService;
 
-
+/*
+mutation createFilm {
+  createFilm(filmInputDto: {
+    title:"someFilm"
+    aboutFilm: "very cool film"
+    genres: [Crime, Comedy, Action]
+  }) {
+    id
+    genres
+    title
+  }
+}
+ */
 @Mutation("createFilm")
 public FilmDto createFilm(FilmInputDto filmInputDto){
     return filmService.createFilm(filmInputDto);
@@ -38,10 +50,10 @@ public List<FilmDto> getFilms(){
 public FilmDto getFilmById(UUID id){
     return filmService.getFilmById(id);
 }
-@Query("getFIlmByGenre")
-public List<FilmDto> getFilmsByGenre(List<FilmInputDto> filmInputDtos){
-    return filmService.getFilmsByGenre(filmInputDtos);
-}
+//@Query("getFIlmByGenre")
+//public List<FilmDto> getFilmsByGenre(List<FilmInputDto> filmInputDtos){
+//    return filmService.getFilmsByGenre(filmInputDtos);
+//}
 
 
 
