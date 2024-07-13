@@ -18,7 +18,7 @@ public class FilmRepository implements PanacheRepositoryBase<Film, UUID> {
     }
 
     public List<Film> findByGenre(GenreEnum genre) {
-return find("where genre = ?1",genre).list();
+return find("where genres = ?1",genre).list();
 
     }
 }
