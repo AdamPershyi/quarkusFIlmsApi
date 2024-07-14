@@ -1,6 +1,7 @@
 package resources;
 import dtos.FilmDto;
 import dtos.FilmInputDto;
+import enums.GenreEnum;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;
@@ -8,6 +9,7 @@ import org.eclipse.microprofile.graphql.Query;
 import services.FilmService;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @GraphQLApi
@@ -50,10 +52,10 @@ public List<FilmDto> getFilms(){
 public FilmDto getFilmById(UUID id){
     return filmService.getFilmById(id);
 }
-//@Query("getFIlmByGenre")
-//public List<FilmDto> getFilmsByGenre(List<FilmInputDto> filmInputDtos){
-//    return filmService.getFilmsByGenre(filmInputDtos);
-//}
+@Query("getFIlmByGenre")
+public List<FilmDto> getFilmsByGenre(FilmInputDto filmInputDto){
+    return filmService.getFilmsByGenre(filmInputDto);
+}
 
 
 

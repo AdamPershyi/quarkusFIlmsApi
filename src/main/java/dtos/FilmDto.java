@@ -1,5 +1,7 @@
 package dtos;
 
+import entities.Actor;
+import entities.Genre;
 import enums.GenreEnum;
 
 import java.io.Serializable;

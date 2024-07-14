@@ -68,4 +68,12 @@ public class Film {
             inverseJoinColumns = @JoinColumn(name = "genre_name")
     )
     private Set<Genre> genres = new LinkedHashSet<>();
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "film_actors",
+//            joinColumns = @JoinColumn(name = "film_id"),
+//            inverseJoinColumns = @JoinColumn(name = "actor_id")
+//    )
+//    private Set<Actor> actors = new LinkedHashSet<>();
 }

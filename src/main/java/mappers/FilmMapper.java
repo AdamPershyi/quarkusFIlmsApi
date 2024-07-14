@@ -2,8 +2,10 @@ package mappers;
 
 import dtos.FilmDto;
 import dtos.FilmInputDto;
+import entities.Actor;
 import entities.Film;
 import entities.Genre;
+import enums.ActorEnum;
 import enums.GenreEnum;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -44,5 +46,17 @@ public interface FilmMapper {
                 .map(enumFromDto -> Genre.builder().name(enumFromDto).build())
                 .collect(Collectors.toSet());
     }
+
+//    @Named("actorsToActorDto")
+//    default  Set<ActorEnum> actorsToActorDto(Set<Actor> actor) {
+//      return   actor.stream()
+//                .map(Actor::getActorEnum)
+//                .collect(Collectors.toSet());
+//    }
+//    @Named("actorsToActorEntity")
+//    default Set<Actor> actorsToActorEntity(Set<ActorEnum> actors){
+//        return actors.stream()
+//                .map(actorEnum -> Actor.builder().actorEnum(actorEnum).build())
+//    }
 }
 

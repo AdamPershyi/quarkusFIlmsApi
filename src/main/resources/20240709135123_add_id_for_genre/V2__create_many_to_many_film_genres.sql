@@ -8,3 +8,4 @@ CREATE TABLE film_genres
 );
 
 alter table films drop column genre;
+
