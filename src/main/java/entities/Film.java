@@ -1,23 +1,10 @@
 package entities;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
+import org.hibernate.annotations.UuidGenerator;
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -32,7 +19,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Film {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @UuidGenerator
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -49,7 +36,7 @@ public class Film {
     private String releasedCity;
 
     @Column(name = "budget", length = Integer.MAX_VALUE)
-    private String budget;
+    private BigDecimal budget;
 
     @Column(name = "created_at", nullable = false)
     @CreationTimestamp
@@ -62,18 +49,16 @@ public class Film {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "film_genres",
-            joinColumns = {
-                    @JoinColumn(name = "film_id")
-            },
+            joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_name")
     )
     private Set<Genre> genres = new LinkedHashSet<>();
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(
-//            name = "film_actors",
-//            joinColumns = @JoinColumn(name = "film_id"),
-//            inverseJoinColumns = @JoinColumn(name = "actor_id")
-//    )
-//    private Set<Actor> actors = new LinkedHashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "film_actors",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_name")
+    )
+    private Set<Actor> actors = new LinkedHashSet<>();
 }

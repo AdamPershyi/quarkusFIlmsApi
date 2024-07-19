@@ -1,13 +1,10 @@
 package repositories;
-
 import entities.Film;
-import entities.Genre;
+import enums.ActorEnum;
 import enums.GenreEnum;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
-
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 
@@ -24,9 +21,8 @@ public class FilmRepository implements PanacheRepositoryBase<Film, UUID> {
         return find("from Film f join f.genres g where g.name = ?1", genre).list();
     }
 
-    public List<Film> findByGenres(Set<Genre> genres) {
-        return find("where genres = ?1", genres).list();
-
+    public List<Film> findByActor(ActorEnum actor){
+        return find("from Film f join f.actors a where a.name = ?1",actor).list();
     }
 
 }
