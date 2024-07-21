@@ -20,7 +20,6 @@ public class FilmService {
     @Inject
     FilmRepository filmRepository;
 
-
     @Transactional
     public FilmDto createFilm(FilmInputDto filmInputDto) {
         Film entity = filmMapper.toEntity(filmInputDto);

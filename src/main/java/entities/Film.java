@@ -46,7 +46,7 @@ public class Film {
     @UpdateTimestamp
     private OffsetDateTime updatedAt;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(
             name = "film_genres",
             joinColumns = @JoinColumn(name = "film_id"),
@@ -54,7 +54,7 @@ public class Film {
     )
     private Set<Genre> genres = new LinkedHashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(
             name = "film_actors",
             joinColumns = @JoinColumn(name = "film_id"),

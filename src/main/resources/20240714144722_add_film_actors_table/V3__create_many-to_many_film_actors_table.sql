@@ -9,7 +9,6 @@ VALUES ('CHRIS_HEMSWORTH'),
        ('WILL_SMITH'),
        ('BRAD_PITT');
 
-
 CREATE TABLE film_actors
 (
     "film_id" UUID NOT NULL,
