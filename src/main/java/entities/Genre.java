@@ -1,29 +1,28 @@
 package entities;
-
 import enums.GenreEnum;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "genres")
+@Table(name = "genre")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Genre {
-
     @Id
     @Column(name = "name", nullable = false)
     @Enumerated(EnumType.STRING)
     private GenreEnum name;
+
+    @ManyToMany(mappedBy = "genres")
+    private Set<Film> films = new LinkedHashSet<>();
+
 }

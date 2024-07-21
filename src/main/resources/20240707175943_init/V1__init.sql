@@ -21,7 +21,7 @@ CREATE TABLE films
     "about_film"    TEXT,
     "released_date" TEXT,
     "released_city" TEXT,
-    "budget"        TEXT,
+    "budget"        DECIMAL,
     "created_at"    TIMESTAMP WITH TIME ZONE NOT NULL,
     "updated_at"    TIMESTAMP WITH TIME ZONE NOT NULL,
 
